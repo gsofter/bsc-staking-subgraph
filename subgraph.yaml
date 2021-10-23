@@ -1,0 +1,32 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Staking
+    network: bsc
+    source:
+      address: "0xFbA5325d99108782E1ba869c7918e57131d062A4"
+      abi: Staking
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ClaimedGFX
+        - ClaimedNFT
+        - NewNFTStaked
+        - OwnershipTransferred
+      abis:
+        - name: Staking
+          file: ./abis/Staking.json
+      eventHandlers:
+        - event: ClaimedGFX(address,uint256)
+          handler: handleClaimedGFX
+        - event: ClaimedNFT(uint256,address)
+          handler: handleClaimedNFT
+        - event: NewNFTStaked(uint256,address,string,uint256,uint256)
+          handler: handleNewNFTStaked
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/mapping.ts
