@@ -62,6 +62,7 @@ export function handleNewNFTStaked(event: NewNFTStaked): void {
   entity.nftOwner = event.params.nftOwner;
   entity.nftId = event.params.nftId;
   entity.nftImage = event.params.nftImage;
+  entity.save();
 }
 
 export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
