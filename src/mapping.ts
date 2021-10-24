@@ -23,7 +23,7 @@ export function handleClaimedGFX(event: ClaimedGFX): void {
   }
 
   // BigInt and BigDecimal math are supported
-  // entity.count = entity.count + BigInt.fromI32(1);
+  entity.count = entity.count + BigInt.fromI32(1);
 
   // Entity fields can be set based on event parameters
   entity.nftOwner = event.params.nftOwner;
