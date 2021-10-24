@@ -1,6 +1,18 @@
-type ExampleEntity @entity {
+type NFTEntity @entity {
   id: ID!
   count: BigInt!
   nftOwner: Bytes! # address
   amount: BigInt! # uint256
+}
+
+type Factory @entity {
+  id: ID!
+  name: String
+}
+
+type NewNFTStakedEntity @entity {
+  id: ID!
+  nftId: BigInt! # uint256
+  nftOwner: Bytes! # address
+  nftImage: String! # string
 }
